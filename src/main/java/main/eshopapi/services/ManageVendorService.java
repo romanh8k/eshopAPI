@@ -2,13 +2,16 @@ package main.eshopapi.services;
 
 import main.eshopapi.entities.Vendor;
 import main.eshopapi.repositories.IVendorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
 public class ManageVendorService {
 
+    @Autowired
     private final IVendorRepository vendorRepository;
 
     public ManageVendorService(IVendorRepository vendorRepository) {
@@ -21,5 +24,9 @@ public class ManageVendorService {
 
     public List<Vendor> findVendorsByName(String name) {
         return vendorRepository.findVendorsByName(name);
+    }
+
+    public void addVendor(String name) {
+        vendorRepository.addVendor(name);
     }
 }

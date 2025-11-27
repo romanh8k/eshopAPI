@@ -15,7 +15,7 @@ public class Product {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "vendor_id")
-    private Vendor vendor;
+    private Vendor vendorId;
     private String name;
     private String description;
     private double price;

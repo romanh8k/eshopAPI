@@ -6,6 +6,7 @@ import main.eshopapi.services.ManageVendorService;
 import main.eshopapi.services.PostProductService;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -32,5 +33,10 @@ public class VendorController {
     @PostMapping(value = "/vendors", params = "vendorId")
     public void postProduct(@RequestBody Product product, @RequestParam Long vendorId) {
         postProductService.postProduct(product, vendorId);
+    }
+
+    @PostMapping(value = "/vendors", params = "name")
+    public void addVendor(@RequestParam String name) {
+        manageVendorService.addVendor(name);
     }
 }
