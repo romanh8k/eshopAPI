@@ -1,6 +1,10 @@
 package main.eshopapi.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -9,8 +13,16 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Getter
-public class Vendor extends User {
+@Setter
+@Entity
+public class Vendor {
 
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String name;
+    private String email;
+    private BigDecimal wallet;
     private List<Product> products;
 
     public Vendor() {

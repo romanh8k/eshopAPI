@@ -1,10 +1,22 @@
 package main.eshopapi.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 
-public class Customer extends User {
+@Getter
+@Setter
+@Entity
+public class Customer {
 
-    public Customer(int id, String name, String mail) {
-        super();
-    }
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String name;
+    private String mail;
+    private BigDecimal wallet;
 }

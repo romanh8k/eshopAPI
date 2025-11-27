@@ -11,12 +11,11 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-@Entity
 public abstract class User {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
     private String name;
     private String mail;
     private BigDecimal wallet;
