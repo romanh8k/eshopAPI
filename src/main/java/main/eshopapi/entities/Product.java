@@ -1,7 +1,6 @@
 package main.eshopapi.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +11,10 @@ import lombok.Setter;
 public class Product {
 
     @Id
-    private int id;
+    @GeneratedValue
+    private Long id;
+    @ManyToOne
+    @JoinColumn(name = "vendor_id")
     private Vendor vendor;
     private String name;
     private String description;
