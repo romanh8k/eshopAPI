@@ -19,7 +19,6 @@ public class Vendor {
     @GeneratedValue
     private Long id;
     private String name;
-    private String email;
     private BigDecimal wallet;
     @OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products;
@@ -47,7 +46,16 @@ public class Vendor {
         return ps;
     }
 
-    public void removeProduct(Product p) {
-        products.remove(p);
+    public void sellProduct(Product p) {
+        Product remove = products.stream()
+                        .filter(prod -> Objects.equals(prod.getId(), p.getId()))
+                        .findAny().get();
+        if (remove.getAmount() > p.getAmount()) {
+            remove.setAmount(remove.getAmount() - p.getAmount());
+        }
+        else {
+            products.remove(p);
+        }
+
     }
 }
