@@ -13,8 +13,8 @@ public class Vendor extends User {
 
     private List<Product> products;
 
-    public Vendor(int id, String name, String mail) {
-        super(id, name, mail, new BigDecimal(0));
+    public Vendor() {
+        super();
         products = new ArrayList<Product>();
     }
 

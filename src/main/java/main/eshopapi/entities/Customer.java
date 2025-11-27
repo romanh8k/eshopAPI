@@ -5,6 +5,6 @@ import java.math.BigDecimal;
 public class Customer extends User {
 
     public Customer(int id, String name, String mail) {
-        super(id, name, mail, new BigDecimal(0));
+        super();
     }
 }
