@@ -1,8 +1,6 @@
 package main.eshopapi.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,6 +21,7 @@ public class Vendor {
     private String name;
     private String email;
     private BigDecimal wallet;
+    @OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Product> products;
 
     public Vendor() {
