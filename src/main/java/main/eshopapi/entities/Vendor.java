@@ -13,10 +13,11 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @Entity
+@Table(name="vendor")
 public class Vendor {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private BigDecimal wallet;
