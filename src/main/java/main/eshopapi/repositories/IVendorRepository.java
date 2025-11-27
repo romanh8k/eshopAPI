@@ -15,4 +15,7 @@ public interface IVendorRepository extends CrudRepository<Vendor, Long> {
     List<Vendor> findVendorsByName(String name);
 
     Vendor findVendorById(Long id);
+
+    @Query("select * from vendor")
+    List<Vendor> findAll();
 }
