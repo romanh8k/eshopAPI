@@ -26,6 +26,17 @@ public interface IProductRepository extends CrudRepository<Product, Long> {
     @Query("select p from Product p where p.price = :price")
     List<Product> findProductsByPrice(double price);
 
+    @Query("select p from Product p where p.vendorId = :id")
+    List<Product> findProductsByVendorId(Long id);
+
+    @Query("select p from Product p where p.price >= :price")
+    List<Product> findProductsByMorePrice(double price);
+
+    @Query("select p from Product p where p.price <= :price")
+    List<Product> findProductsByLessPrice(double price);
+
+
+
     @Modifying
     @Query("insert into Product (vendorId, name, description, price, amount) values (:v, :n, :d, :p, :a)")
     @Transactional
