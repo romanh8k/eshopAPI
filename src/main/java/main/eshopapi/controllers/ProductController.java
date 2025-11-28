@@ -4,7 +4,7 @@ import main.eshopapi.repositories.IProductRepository;
 
 public class ProductController {
 
-    private IProductRepository productRepository;
+    private final IProductRepository productRepository;
 
     public ProductController(IProductRepository productRepository) {
         this.productRepository = productRepository;
