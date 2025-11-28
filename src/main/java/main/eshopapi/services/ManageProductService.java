@@ -34,4 +34,8 @@ public class ManageProductService {
     public List<Product> findProductsInPriceInterval(double lowerBound, double upperBound) {
         return productRepository.findProductsInPriceInterval(lowerBound, upperBound);
     }
+
+    public List<Product> findProductsByNameInPriceInterval(String name, double lowerBound, double upperBound) {
+        return productRepository.findProductsByNameInPriceInterval(name, lowerBound, upperBound);
+    }
 }

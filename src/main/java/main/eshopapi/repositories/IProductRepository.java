@@ -9,7 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
@@ -38,6 +37,9 @@ public interface IProductRepository extends CrudRepository<Product, Long> {
     @Query("select p from Product p where p.price >= :lowerBound and p.price <= :upperBound")
     List<Product> findProductsInPriceInterval(double lowerBound, double upperBound);
 
+    @Query("select p from Product p where p.price >= :lowerBound and p.price <= :upperBound and p.name like :name")
+    List<Product> findProductsByNameInPriceInterval(String name, double lowerBound, double upperBound);
+
     @Modifying
     @Query("insert into Product (vendorId, name, description, price, amount) values (:v, :n, :d, :p, :a)")
     @Transactional
@@ -62,4 +64,14 @@ public interface IProductRepository extends CrudRepository<Product, Long> {
     @Query("update Product p set p.amount = :amount where p.id = :id")
     @Transactional
     void editProductAmount(Long id, int amount);
+
+    @Modifying
+    @Query("delete Product p where p.id = :id")
+    @Transactional
+    void deleteProductById(int id);
+
+    @Modifying
+    @Query("delete Product p where p.vendorId = :id")
+    @Transactional
+    void deleteProductsByVendorId(int id);
 }
