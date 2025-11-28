@@ -44,4 +44,9 @@ public class VendorController {
     public void addVendor(@RequestBody String name) {
         manageVendorService.addVendor(name);
     }
+
+    @PutMapping("/vendors")
+    public void editVendor(@RequestBody Vendor vendor) {
+        manageVendorService.editVendor(vendor);
+    }
 }

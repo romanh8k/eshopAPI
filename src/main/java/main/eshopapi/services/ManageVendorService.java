@@ -33,4 +33,15 @@ public class ManageVendorService {
     public void addVendor(String name) {
         vendorRepository.addVendor(name);
     }
+
+    public void editVendor(Vendor vendor) {
+
+        if (vendor.getName() != null) {
+            vendorRepository.setVendorName(vendor.getId(), vendor.getName());
+        }
+
+        if (vendor.getWallet() != null) {
+            vendorRepository.setVendorWallet(vendor.getId(), vendor.getWallet());
+        }
+    }
 }
