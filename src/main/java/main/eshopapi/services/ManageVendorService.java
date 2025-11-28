@@ -44,4 +44,8 @@ public class ManageVendorService {
             vendorRepository.setVendorWallet(vendor.getId(), vendor.getWallet());
         }
     }
+
+    public void deleteVendor(Long id) {
+        vendorRepository.deleteVendor(id);
+    }
 }

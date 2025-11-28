@@ -37,6 +37,11 @@ public interface IVendorRepository extends CrudRepository<Vendor, Long> {
     @Transactional
     void setVendorWallet(Long id, BigDecimal wallet);
 
+    @Modifying
+    @Query("delete from Vendor v where v.id = :id")
+    @Transactional
+    void deleteVendor(Long id);
+
 //    @Modifying
 //    @Query(value = "update ")
 //    @Transactional

@@ -49,4 +49,9 @@ public class VendorController {
     public void editVendor(@RequestBody Vendor vendor) {
         manageVendorService.editVendor(vendor);
     }
+
+    @DeleteMapping(value = "/vendors", params = "id")
+    public void deleteVendor(@RequestParam Long id) {
+        manageVendorService.deleteVendor(id);
+    }
 }
