@@ -25,15 +25,20 @@ public class VendorController {
         return manageVendorService.findAll();
     }
 
+    @GetMapping(value = "/vendors", params = "id")
+    public Vendor findVendorById(@RequestParam Long id) {
+        return manageVendorService.findVendorById(id);
+    }
+
     @GetMapping(value = "/vendors", params = "name")
     public List<Vendor> findVendorsByName(@RequestParam String name) {
         return manageVendorService.findVendorsByName(name);
     }
 
-//    @PostMapping(value = "/vendors", params = "vendorId")
-//    public void postProduct(@RequestBody Product product, @RequestParam Long vendorId) {
-//        postProductService.postProduct(product, vendorId);
-//    }
+    @PostMapping(value = "/vendors", params = "vendorId")
+    public void postProduct(@RequestBody Product product, @RequestParam Long vendorId) {
+        postProductService.postProduct(product, vendorId);
+    }
 
     @PostMapping(value = "/vendors")
     public void addVendor(@RequestBody String name) {

@@ -22,6 +22,10 @@ public class ManageVendorService {
         return vendorRepository.findAll();
     }
 
+    public Vendor findVendorById(Long id) {
+        return vendorRepository.findVendorById(id);
+    }
+
     public List<Vendor> findVendorsByName(String name) {
         return vendorRepository.findVendorsByName(name);
     }
