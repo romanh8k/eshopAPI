@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class PostProductService {
 
-    @Autowired
     private final IProductRepository productRepository;
 //    private final IVendorRepository vendorRepository;
 

@@ -35,10 +35,31 @@ public interface IProductRepository extends CrudRepository<Product, Long> {
     @Query("select p from Product p where p.price <= :price")
     List<Product> findProductsByLessPrice(double price);
 
-
+    @Query("select p from Product p where p.price >= :lowerBound and p.price <= :upperBound")
+    List<Product> findProductsInPriceInterval(double lowerBound, double upperBound);
 
     @Modifying
     @Query("insert into Product (vendorId, name, description, price, amount) values (:v, :n, :d, :p, :a)")
     @Transactional
     void addProduct(Long v, String n, String d, double p, int a);
+
+    @Modifying
+    @Query("update Product p set p.name = :name where p.id = :id")
+    @Transactional
+    void editProductName(Long id, String name);
+
+    @Modifying
+    @Query("update Product p set p.description = :description where p.id = :id")
+    @Transactional
+    void editProductDescription(Long id, String description);
+
+    @Modifying
+    @Query("update Product p set p.price = :price where p.id = :id")
+    @Transactional
+    void editProductPrice(Long id, double price);
+
+    @Modifying
+    @Query("update Product p set p.amount = :amount where p.id = :id")
+    @Transactional
+    void editProductAmount(Long id, int amount);
 }
