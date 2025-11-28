@@ -25,7 +25,7 @@ public class Vendor {
     private String name;
 
     @Column(name = "vendor_wallet")
-    private BigDecimal wallet;
+    private BigDecimal wallet = new BigDecimal(0);
 //    @OneToMany(mappedBy = "vendor", cascade = CascadeType.ALL, orphanRemoval = true)
 //    private List<Long> products;
 

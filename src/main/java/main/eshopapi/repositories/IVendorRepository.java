@@ -23,7 +23,7 @@ public interface IVendorRepository extends CrudRepository<Vendor, Long> {
     List<Vendor> findAll();
 
     @Modifying
-    @Query(value = "insert into vendor (vendor_name) values (:name)", nativeQuery = true)
+    @Query(value = "insert into vendor (vendor_name, vendor_wallet) values (:name, 0.0)", nativeQuery = true)
     @Transactional
     void addVendor(String name);
 }
