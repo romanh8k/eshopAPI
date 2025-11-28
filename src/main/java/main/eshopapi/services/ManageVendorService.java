@@ -5,13 +5,11 @@ import main.eshopapi.repositories.IVendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Service
 public class ManageVendorService {
 
-    @Autowired
     private final IVendorRepository vendorRepository;
 
     public ManageVendorService(IVendorRepository vendorRepository) {

@@ -21,7 +21,7 @@ public class PostProductService {
     }
 
     @Transactional
-    public void postProduct(Product p, long vendorId) {
+    public void postProduct(Product p, Long vendorId) {
 
 //        Vendor v = vendorRepository.findVendorById(vendorId);
 //        v.addProduct(p);

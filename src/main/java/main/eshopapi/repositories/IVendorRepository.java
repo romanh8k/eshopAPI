@@ -41,9 +41,4 @@ public interface IVendorRepository extends CrudRepository<Vendor, Long> {
     @Query("delete from Vendor v where v.id = :id")
     @Transactional
     void deleteVendor(Long id);
-
-//    @Modifying
-//    @Query(value = "update ")
-//    @Transactional
-//    void editVendor(Vendor vendor);
 }

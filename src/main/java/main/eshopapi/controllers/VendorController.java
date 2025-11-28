@@ -6,7 +6,6 @@ import main.eshopapi.services.ManageVendorService;
 import main.eshopapi.services.PostProductService;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
