@@ -1,5 +1,6 @@
 package main.eshopapi.repositories;
 
+import jakarta.transaction.Transactional;
 import main.eshopapi.entities.Product;
 import main.eshopapi.entities.Vendor;
 import org.springframework.data.jpa.repository.Modifying;
@@ -22,6 +23,7 @@ public interface IVendorRepository extends CrudRepository<Vendor, Long> {
     List<Vendor> findAll();
 
     @Modifying
-    @Query(value = "insert into Vendor (name) values (:name)", nativeQuery = true)
+    @Query(value = "insert into vendor (vendor_name) values (:name)", nativeQuery = true)
+    @Transactional
     void addVendor(String name);
 }
