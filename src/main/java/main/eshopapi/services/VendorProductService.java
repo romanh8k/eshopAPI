@@ -1,8 +1,11 @@
 package main.eshopapi.services;
 
+import main.eshopapi.entities.Product;
 import main.eshopapi.repositories.IProductRepository;
 import main.eshopapi.repositories.IVendorRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class VendorProductService {

@@ -38,4 +38,27 @@ public class ManageProductService {
     public List<Product> findProductsByNameInPriceInterval(String name, double lowerBound, double upperBound) {
         return productRepository.findProductsByNameInPriceInterval(name, lowerBound, upperBound);
     }
+
+    public List<Product> findProductsByVendorId(Long vendorId) {
+        return productRepository.findProductsByVendorId(vendorId);
+    }
+
+    public void addProduct(Product p) {
+        productRepository.addProduct(p.getVendorId(), p.getName(), p.getDescription(), p.getPrice(), p.getAmount());
+    }
+
+    public void editProduct(Product p) {
+        if (p.getName() != null) {
+            productRepository.editProductName(p.getId(), p.getName());
+        }
+        if (p.getPrice() != 0.0) {
+            productRepository.editProductPrice(p.getId(), p.getPrice());
+        }
+        if (p.getDescription() != null) {
+            productRepository.editProductDescription(p.getId(), p.getDescription());
+        }
+        if (p.getAmount() != 0) {
+            productRepository.editProductAmount(p.getId(), p.getAmount());
+        }
+    }
 }

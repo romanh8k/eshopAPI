@@ -42,4 +42,19 @@ public class ProductController {
         return manageProductService.findProductsByNameInPriceInterval(name, lowerBound, upperBound);
     }
 
+    @GetMapping(value = "/products", params = "vendorId")
+    public List<Product> findProductsByVendorId(@RequestParam Long vendorId) {
+        return manageProductService.findProductsByVendorId(vendorId);
+    }
+
+    @PostMapping(value = "/products")
+    public void postProduct(@RequestBody Product p) {
+        manageProductService.addProduct(p);
+    }
+
+    @PutMapping(value = "/products")
+    public void editProduct(@RequestBody Product p) {
+        manageProductService.editProduct(p);
+    }
+
 }
