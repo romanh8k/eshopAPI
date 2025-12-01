@@ -43,9 +43,9 @@ public class ManageProductService {
         return productRepository.findProductsByVendorId(vendorId);
     }
 
-    public void addProduct(Product p) {
-        productRepository.addProduct(p.getVendorId(), p.getName(), p.getDescription(), p.getPrice(), p.getAmount());
-    }
+//    public void addProduct(Product p) {
+//        productRepository.addProduct(p.getVendorId(), p.getName(), p.getDescription(), p.getPrice(), p.getAmount());
+//    }
 
     public void editProduct(Product p) {
         if (p.getName() != null) {
@@ -60,5 +60,9 @@ public class ManageProductService {
         if (p.getAmount() != 0) {
             productRepository.editProductAmount(p.getId(), p.getAmount());
         }
+    }
+
+    public void deleteProduct(Long id) {
+        productRepository.deleteProductById(id);
     }
 }

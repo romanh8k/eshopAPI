@@ -4,6 +4,7 @@ import main.eshopapi.entities.Product;
 import main.eshopapi.entities.Vendor;
 import main.eshopapi.services.ManageVendorService;
 import main.eshopapi.services.PostProductService;
+import main.eshopapi.services.VendorProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,12 +12,14 @@ import java.util.List;
 @RestController
 public class VendorController {
 
-    private final PostProductService postProductService;
+//    private final PostProductService postProductService;
     private final ManageVendorService manageVendorService;
+    private final VendorProductService vendorProductService;
 
-    public VendorController(PostProductService postProductService, ManageVendorService manageVendorService) {
-        this.postProductService = postProductService;
+    public VendorController(ManageVendorService manageVendorService, VendorProductService vendorProductService) {
+//        this.postProductService = postProductService;
         this.manageVendorService = manageVendorService;
+        this.vendorProductService = vendorProductService;
     }
 
     @GetMapping(value = "/vendors")
@@ -34,10 +37,10 @@ public class VendorController {
         return manageVendorService.findVendorsByName(name);
     }
 
-    @PostMapping(value = "/vendors", params = "vendorId")
-    public void postProduct(@RequestBody Product product, @RequestParam Long vendorId) {
-        postProductService.postProduct(product, vendorId);
-    }
+//    @PostMapping(value = "/vendors", params = "vendorId")
+//    public void postProduct(@RequestBody Product product, @RequestParam Long vendorId) {
+//        postProductService.postProduct(product, vendorId);
+//    }
 
     @PostMapping(value = "/vendors")
     public void addVendor(@RequestBody String name) {
@@ -51,6 +54,6 @@ public class VendorController {
 
     @DeleteMapping(value = "/vendors", params = "id")
     public void deleteVendor(@RequestParam Long id) {
-        manageVendorService.deleteVendor(id);
+        vendorProductService.deleteVendor(id);
     }
 }

@@ -68,10 +68,10 @@ public interface IProductRepository extends CrudRepository<Product, Long> {
     @Modifying
     @Query("delete Product p where p.id = :id")
     @Transactional
-    void deleteProductById(int id);
+    void deleteProductById(Long id);
 
     @Modifying
     @Query("delete Product p where p.vendorId = :id")
     @Transactional
-    void deleteProductsByVendorId(int id);
+    void deleteProductsByVendorId(Long id);
 }

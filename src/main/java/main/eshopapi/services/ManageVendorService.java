@@ -43,7 +43,7 @@ public class ManageVendorService {
         }
     }
 
-    public void deleteVendor(Long id) {
-        vendorRepository.deleteVendor(id);
-    }
+//    public void deleteVendor(Long id) {
+//        vendorRepository.deleteVendor(id);
+//    }
 }

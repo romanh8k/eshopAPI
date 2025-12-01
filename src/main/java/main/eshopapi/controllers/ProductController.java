@@ -4,6 +4,7 @@ import main.eshopapi.entities.Product;
 import main.eshopapi.entities.Vendor;
 import main.eshopapi.repositories.IProductRepository;
 import main.eshopapi.services.ManageProductService;
+import main.eshopapi.services.VendorProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,9 +13,11 @@ import java.util.List;
 public class ProductController {
 
     private final ManageProductService manageProductService;
+    private final VendorProductService vendorProductService;
 
-    public ProductController(ManageProductService manageProductService) {
+    public ProductController(ManageProductService manageProductService, VendorProductService vendorProductService) {
         this.manageProductService = manageProductService;
+        this.vendorProductService = vendorProductService;
     }
 
     @GetMapping("/products")
@@ -49,12 +52,17 @@ public class ProductController {
 
     @PostMapping(value = "/products")
     public void postProduct(@RequestBody Product p) {
-        manageProductService.addProduct(p);
+        vendorProductService.addProduct(p);
     }
 
     @PutMapping(value = "/products")
     public void editProduct(@RequestBody Product p) {
         manageProductService.editProduct(p);
+    }
+
+    @DeleteMapping(value = "products", params = "productId")
+    public void deleteProduct(@RequestParam Long productId) {
+        manageProductService.deleteProduct(productId);
     }
 
 }
