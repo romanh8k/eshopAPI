@@ -14,9 +14,9 @@ import java.util.List;
 public interface ICustomerRepository extends CrudRepository<Customer, Long> {
 
     @Query("select c from Customer c where c.name = :name")
-    List<Customer> findVendorsByName(String name);
+    List<Customer> findCustomersByName(String name);
 
-    Customer findVendorById(Long id);
+    Customer findCustomerById(Long id);
 
     @Query("select c from Customer c")
     List<Customer> findAll();
