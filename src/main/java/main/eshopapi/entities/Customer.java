@@ -1,8 +1,6 @@
 package main.eshopapi.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,9 +12,13 @@ import java.math.BigDecimal;
 public class Customer {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customer_id")
     private Long id;
+
+    @Column(name = "customer_name")
     private String name;
-    private String mail;
+
+    @Column(name = "customer_wallet")
     private BigDecimal wallet;
 }

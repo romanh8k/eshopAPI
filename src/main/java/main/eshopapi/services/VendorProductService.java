@@ -27,12 +27,11 @@ public class VendorProductService {
         vendorRepository.deleteVendor(id);
     }
 
-    public void addProduct(ProductDTO p) {
+    public void addProduct(Product p) {
         if (vendorRepository.findVendorById(p.getVendorId()) == null) {
             logger.warning("Vendor with vendor_id = " + p.getVendorId() + " doesn't exist");
         }
         else {
-//            logger.info();
             productRepository.addProduct(p.getVendorId(), p.getName(), p.getDescription(), p.getPrice(), p.getAmount());
         }
     }

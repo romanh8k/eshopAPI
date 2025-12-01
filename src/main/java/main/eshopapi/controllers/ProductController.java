@@ -52,7 +52,7 @@ public class ProductController {
     }
 
     @PostMapping(value = "/products")
-    public void postProduct(@RequestBody ProductDTO p) {
+    public void postProduct(@RequestBody Product p) {
         vendorProductService.addProduct(p);
     }
 
