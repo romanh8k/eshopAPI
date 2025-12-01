@@ -1,5 +1,6 @@
 package main.eshopapi.services;
 
+import main.eshopapi.dtos.ProductDTO;
 import main.eshopapi.entities.Product;
 import main.eshopapi.repositories.IProductRepository;
 import main.eshopapi.repositories.IVendorRepository;
@@ -26,7 +27,7 @@ public class VendorProductService {
         vendorRepository.deleteVendor(id);
     }
 
-    public void addProduct(Product p) {
+    public void addProduct(ProductDTO p) {
         if (vendorRepository.findVendorById(p.getVendorId()) == null) {
             logger.warning("Vendor with vendor_id = " + p.getVendorId() + " doesn't exist");
         }

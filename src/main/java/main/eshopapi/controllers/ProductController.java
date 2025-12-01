@@ -1,5 +1,6 @@
 package main.eshopapi.controllers;
 
+import main.eshopapi.dtos.ProductDTO;
 import main.eshopapi.entities.Product;
 import main.eshopapi.entities.Vendor;
 import main.eshopapi.repositories.IProductRepository;
@@ -51,7 +52,7 @@ public class ProductController {
     }
 
     @PostMapping(value = "/products")
-    public void postProduct(@RequestBody Product p) {
+    public void postProduct(@RequestBody ProductDTO p) {
         vendorProductService.addProduct(p);
     }
 
