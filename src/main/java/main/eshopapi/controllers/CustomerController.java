@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
 public class CustomerController {
 
     private final ManageCustomerService manageCustomerService;
