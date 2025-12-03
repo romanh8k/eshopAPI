@@ -20,6 +20,12 @@ public class Vendor {
     @Column(name = "vendor_name")
     private String name;
 
+    @Column(name = "vendor_email", unique = true)
+    private String email;
+
+    @Column(name = "vendor_password")
+    private
+
     @Column(name = "vendor_wallet")
     private BigDecimal wallet = new BigDecimal(0);
 }

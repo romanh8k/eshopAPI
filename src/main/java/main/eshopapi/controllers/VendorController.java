@@ -1,9 +1,7 @@
 package main.eshopapi.controllers;
 
-import main.eshopapi.entities.Product;
 import main.eshopapi.entities.Vendor;
 import main.eshopapi.services.ManageVendorService;
-import main.eshopapi.services.PostProductService;
 import main.eshopapi.services.VendorProductService;
 import org.springframework.web.bind.annotation.*;
 

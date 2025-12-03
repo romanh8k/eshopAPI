@@ -22,10 +22,13 @@ public interface IVendorRepository extends CrudRepository<Vendor, Long> {
     @Query("select v from Vendor v")
     List<Vendor> findAll();
 
+    @Query("select v from Vendor v where v.email = :email")
+    Vendor findVendorByEmail(String email);
+
     @Modifying
-    @Query(value = "insert into vendor (vendor_name, vendor_wallet) values (:name, 0.0)", nativeQuery = true)
+    @Query(value = "insert into vendor (vendor_name, vendor_email, vendor_wallet) values (:name, :email, 0.0)", nativeQuery = true)
     @Transactional
-    void addVendor(String name);
+    void addVendor(String name, String email);
 
     @Modifying
     @Query(value = "update vendor set vendor_name = :name where vendor_id = :id", nativeQuery = true)

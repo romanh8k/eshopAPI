@@ -29,8 +29,12 @@ public class ManageCustomerService {
         return customerRepository.findCustomersByName(name);
     }
 
-    public void addCustomer(String name) {
-        customerRepository.addCustomer(name);
+    public Customer findCustomerByEmail(String email) {
+        return customerRepository.findCustomerByEmail(email);
+    }
+
+    public void addCustomer(Customer customer) {
+        customerRepository.addCustomer(customer.getName(), customer.getEmail());
     }
 
     public void editCustomer(Customer customer) {

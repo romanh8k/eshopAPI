@@ -28,8 +28,8 @@ public class ManageVendorService {
         return vendorRepository.findVendorsByName(name);
     }
 
-    public void addVendor(String name) {
-        vendorRepository.addVendor(name);
+    public void addVendor(Vendor vendor) {
+        vendorRepository.addVendor(vendor.getName(), vendor.getEmail());
     }
 
     public void editVendor(Vendor vendor) {
@@ -43,7 +43,7 @@ public class ManageVendorService {
         }
     }
 
-//    public void deleteVendor(Long id) {
-//        vendorRepository.deleteVendor(id);
-//    }
+    public Vendor findVendorByEmail(String email) {
+        return vendorRepository.findVendorByEmail(email);
+    }
 }
