@@ -29,7 +29,7 @@ public class ManageVendorService {
     }
 
     public void addVendor(Vendor vendor) {
-        vendorRepository.addVendor(vendor.getName(), vendor.getEmail());
+        vendorRepository.addVendor(vendor.getName(), vendor.getEmail(), vendor.getPassword());
     }
 
     public void editVendor(Vendor vendor) {

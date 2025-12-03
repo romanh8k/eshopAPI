@@ -34,7 +34,7 @@ public class ManageCustomerService {
     }
 
     public void addCustomer(Customer customer) {
-        customerRepository.addCustomer(customer.getName(), customer.getEmail());
+        customerRepository.addCustomer(customer.getName(), customer.getEmail(), customer.getPassword());
     }
 
     public void editCustomer(Customer customer) {

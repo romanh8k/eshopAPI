@@ -1,5 +1,6 @@
 package main.eshopapi.controllers;
 
+import main.eshopapi.dtos.SignUpDTO;
 import main.eshopapi.entities.Vendor;
 import main.eshopapi.services.ManageVendorService;
 import main.eshopapi.services.VendorProductService;
@@ -36,8 +37,8 @@ public class VendorController {
     }
 
     @PostMapping(value = "/vendors")
-    public void addVendor(@RequestBody String name) {
-        manageVendorService.addVendor(name);
+    public void addVendor(@RequestBody Vendor vendor) {
+        manageVendorService.addVendor(vendor);
     }
 
     @PutMapping("/vendors")

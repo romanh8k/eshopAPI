@@ -31,8 +31,8 @@ public class CustomerController {
     }
 
     @PostMapping(value = "/customers")
-    public void addCustomer(@RequestBody String name) {
-        manageCustomerService.addCustomer(name);
+    public void addCustomer(@RequestBody Customer customer) {
+        manageCustomerService.addCustomer(customer);
     }
 
     @PutMapping("/customers")

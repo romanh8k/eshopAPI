@@ -23,6 +23,9 @@ public class Customer {
     @Column(name = "customer_email", unique = true)
     private String email;
 
+    @Column(name = "customer_password")
+    private String password;
+
     @Column(name = "customer_wallet")
     private BigDecimal wallet;
 }

@@ -24,7 +24,7 @@ public class Vendor {
     private String email;
 
     @Column(name = "vendor_password")
-    private
+    private String password;
 
     @Column(name = "vendor_wallet")
     private BigDecimal wallet = new BigDecimal(0);

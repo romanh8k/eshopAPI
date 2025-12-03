@@ -25,9 +25,9 @@ public interface ICustomerRepository extends CrudRepository<Customer, Long> {
     List<Customer> findAll();
 
     @Modifying
-    @Query(value = "insert into customer (customer_name, customer_email, customer_wallet) values (:name, :email, 0.0)", nativeQuery = true)
+    @Query(value = "insert into customer (customer_name, customer_email, customer_password, customer_wallet) values (:name, :email, :password, 0.0)", nativeQuery = true)
     @Transactional
-    void addCustomer(String name, String email);
+    void addCustomer(String name, String email, String password);
 
     @Modifying
     @Query(value = "update customer set customer_name = :name where customer_id = :id", nativeQuery = true)

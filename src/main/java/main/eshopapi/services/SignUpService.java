@@ -2,8 +2,6 @@ package main.eshopapi.services;
 
 import main.eshopapi.entities.Customer;
 import main.eshopapi.entities.Vendor;
-import main.eshopapi.repositories.ICustomerRepository;
-import main.eshopapi.repositories.IVendorRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.logging.Logger;
@@ -23,8 +21,9 @@ public class SignUpService {
 
     public boolean signUp(Vendor vendor) {
         if (manageVendorService.findVendorByEmail(vendor.getEmail()) == null) {
-            logger.info("New vendor added!");
+            vendor.setPassword(HashingService.hashPassword(vendor.getPassword()));
             manageVendorService.addVendor(vendor);
+            logger.info("New vendor added!");
             return true;
         }
         else {
@@ -35,8 +34,9 @@ public class SignUpService {
 
     public boolean signUp(Customer customer) {
         if (manageCustomerService.findCustomerByEmail(customer.getEmail()) == null) {
-            logger.info("New customer added!");
+            customer.setPassword(HashingService.hashPassword(customer.getPassword()));
             manageCustomerService.addCustomer(customer);
+            logger.info("New customer added!");
             return true;
         }
         else {
