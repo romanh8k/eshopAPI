@@ -13,6 +13,6 @@ public class SignUpDTO {
     private String name;
     private String email;
     private String password;
-    private BigDecimal wallet;
+//    private BigDecimal wallet;
     private UserRoles role;
 }
