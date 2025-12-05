@@ -25,7 +25,7 @@ public class SignUpController {
 
     @PostMapping("/signup")
     public void signUp(@RequestBody SignUpDTO user) {
-        logger.info(user.getName() + " " + user.getEmail() + " " + user.getPassword() + " " + user.getRole());
+//        logger.info(user.getName() + " " + user.getEmail() + " " + user.getPassword() + " " + user.getRole());
         if (user.getRole() == UserRoles.VENDOR) {
             Vendor v = new Vendor();
             v.setName(user.getName());

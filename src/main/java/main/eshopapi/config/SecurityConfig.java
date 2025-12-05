@@ -1,7 +1,9 @@
 package main.eshopapi.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,23 +13,43 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    @Autowired
+    DataSource dataSource;
+
+
+
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .csrf(AbstractHttpConfigurer::disable)
+//                .authorizeHttpRequests(auth -> auth
+//                        .requestMatchers("/signup").permitAll()
+//                        .requestMatchers(HttpMethod.GET, "/vendors").permitAll()
+//                        .requestMatchers(HttpMethod.PUT, "/vendors").authenticated()
+//
+//                )
+//                .formLogin(Customizer.withDefaults());
+//        return http.build();
+//    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/signup").permitAll()
-                        .requestMatchers("/vendors").permitAll()
-                        .requestMatchers("/customers").authenticated()
-//                        .requestMatchers("customers?id={id}").authenticated()/
+                .authorizeHttpRequests(a -> a
+                        .requestMatchers(HttpMethod.POST, "/signup").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/vendors").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/customers").authenticated()
                 )
-                .formLogin(Customizer.withDefaults());
-        return http.build();
+                .formLogin(Customizer.withDefaults())
+                .logout()
     }
 
     @Bean
