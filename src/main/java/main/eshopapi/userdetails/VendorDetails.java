@@ -1,4 +1,4 @@
-package main.eshopapi.services;
+package main.eshopapi.userdetails;
 
 import main.eshopapi.entities.Vendor;
 import org.jspecify.annotations.Nullable;
