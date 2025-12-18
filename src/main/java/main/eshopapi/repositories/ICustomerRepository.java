@@ -40,6 +40,16 @@ public interface ICustomerRepository extends CrudRepository<Customer, Long> {
     void setCustomerWallet(Long id, BigDecimal wallet);
 
     @Modifying
+    @Query(value = "update customer set customer_email = :email where customer_id = :id", nativeQuery = true)
+    @Transactional
+    void setCustomerEmail(Long id, String email);
+
+    @Modifying
+    @Query(value = "update customer set customer_password = :password where customer_id = :id", nativeQuery = true)
+    @Transactional
+    void setCustomerPassword(Long id, String password);
+
+    @Modifying
     @Query("delete from Customer c where c.id = :id")
     @Transactional
     void deleteCustomer(Long id);
