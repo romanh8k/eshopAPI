@@ -1,5 +1,6 @@
 package main.eshopapi.services;
 
+import main.eshopapi.dtos.ProductLogged;
 import main.eshopapi.dtos.VendorLogged;
 import main.eshopapi.entities.Product;
 import main.eshopapi.entities.Vendor;
@@ -34,12 +35,29 @@ public class VendorProductService {
 
     }
 
-    public void addProduct(Product p) {
+    public void addProduct(ProductLogged p) {
         if (vendorRepository.findVendorById(p.getVendorId()) == null) {
             logger.warning("Vendor with vendor_id = " + p.getVendorId() + " doesn't exist");
         }
-        else {
+        else if (new BCryptPasswordEncoder().matches(p.getVendorPassword(), vendorRepository.findVendorById(p.getVendorId()).getPassword())) {
             productRepository.addProduct(p.getVendorId(), p.getName(), p.getDescription(), p.getPrice(), p.getAmount());
+        }
+    }
+
+    public void editProduct(ProductLogged p) {
+        if (new BCryptPasswordEncoder().matches(p.getVendorPassword(), vendorRepository.findVendorById(p.getVendorId()).getPassword())) {
+            if (p.getName() != null) {
+                productRepository.editProductName(p.getId(), p.getName());
+            }
+            if (p.getDescription() != null) {
+                productRepository.editProductDescription(p.getId(), p.getDescription());
+            }
+        }
+    }
+
+    public void deleteProduct(ProductLogged p) {
+        if (new BCryptPasswordEncoder().matches(p.getVendorPassword(), vendorRepository.findVendorById(p.getVendorId()).getPassword())) {
+            productRepository.deleteProductById(p.getId());
         }
     }
 }

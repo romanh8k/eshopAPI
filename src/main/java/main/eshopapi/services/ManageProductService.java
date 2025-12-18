@@ -1,7 +1,9 @@
 package main.eshopapi.services;
 
+import main.eshopapi.dtos.ProductLogged;
 import main.eshopapi.entities.Product;
 import main.eshopapi.repositories.IProductRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -47,22 +49,7 @@ public class ManageProductService {
 //        productRepository.addProduct(p.getVendorId(), p.getName(), p.getDescription(), p.getPrice(), p.getAmount());
 //    }
 
-    public void editProduct(Product p) {
-        if (p.getName() != null) {
-            productRepository.editProductName(p.getId(), p.getName());
-        }
-        if (p.getPrice() != 0.0) {
-            productRepository.editProductPrice(p.getId(), p.getPrice());
-        }
-        if (p.getDescription() != null) {
-            productRepository.editProductDescription(p.getId(), p.getDescription());
-        }
-        if (p.getAmount() != 0) {
-            productRepository.editProductAmount(p.getId(), p.getAmount());
-        }
-    }
 
-    public void deleteProduct(Long id) {
-        productRepository.deleteProductById(id);
-    }
+
+
 }

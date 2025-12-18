@@ -1,5 +1,6 @@
 package main.eshopapi.controllers;
 
+import main.eshopapi.dtos.ProductLogged;
 import main.eshopapi.entities.Product;
 import main.eshopapi.services.ManageProductService;
 import main.eshopapi.services.VendorProductService;
@@ -49,18 +50,18 @@ public class ProductController {
     }
 
     @PostMapping(value = "/products")
-    public void postProduct(@RequestBody Product p) {
+    public void postProduct(@RequestBody ProductLogged p) {
         vendorProductService.addProduct(p);
     }
 
     @PutMapping(value = "/products")
-    public void editProduct(@RequestBody Product p) {
-        manageProductService.editProduct(p);
+    public void editProduct(@RequestBody ProductLogged p) {
+        vendorProductService.editProduct(p);
     }
 
-    @DeleteMapping(value = "products", params = "productId")
-    public void deleteProduct(@RequestParam Long productId) {
-        manageProductService.deleteProduct(productId);
+    @DeleteMapping(value = "/products")
+    public void deleteProduct(@RequestBody ProductLogged p) {
+        vendorProductService.deleteProduct(p);
     }
 
 }
