@@ -1,8 +1,12 @@
 package main.eshopapi.services;
 
+import main.eshopapi.dtos.VendorLogged;
 import main.eshopapi.entities.Product;
+import main.eshopapi.entities.Vendor;
 import main.eshopapi.repositories.IProductRepository;
 import main.eshopapi.repositories.IVendorRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.logging.Logger;
@@ -20,9 +24,14 @@ public class VendorProductService {
         this.productRepository = productRepository;
     }
 
-    public void deleteVendor(Long id) {
-        productRepository.deleteProductsByVendorId(id);
-        vendorRepository.deleteVendor(id);
+    public void deleteVendor(Long id, String password) {
+        PasswordEncoder b = new BCryptPasswordEncoder();
+        Vendor v = vendorRepository.findVendorById(id);
+        if (b.matches(password, v.getPassword())) {
+            productRepository.deleteProductsByVendorId(id);
+            vendorRepository.deleteVendor(id);
+        }
+
     }
 
     public void addProduct(Product p) {

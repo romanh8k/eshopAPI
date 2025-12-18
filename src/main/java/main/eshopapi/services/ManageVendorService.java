@@ -58,9 +58,6 @@ public class ManageVendorService {
                 vendorRepository.setVendorPassword(vendor.getId(), vendor.getPassword());
             }
         }
-
-
-
     }
 
     public Vendor findVendorByEmail(String email) {
