@@ -41,6 +41,16 @@ public interface IVendorRepository extends CrudRepository<Vendor, Long> {
     void setVendorWallet(Long id, BigDecimal wallet);
 
     @Modifying
+    @Query(value = "update vendor set vendor_email = :email where vendor_id = :id", nativeQuery = true)
+    @Transactional
+    void setVendorEmail(Long id, String email);
+
+    @Modifying
+    @Query(value = "update vendor set vendor_password = :password where vendor_id = :id", nativeQuery = true)
+    @Transactional
+    void setVendorPassword(Long id, String password);
+
+    @Modifying
     @Query("delete from Vendor v where v.id = :id")
     @Transactional
     void deleteVendor(Long id);

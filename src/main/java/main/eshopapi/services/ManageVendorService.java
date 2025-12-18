@@ -1,11 +1,16 @@
 package main.eshopapi.services;
 
+import main.eshopapi.dtos.VendorLogged;
 import main.eshopapi.entities.Vendor;
 import main.eshopapi.repositories.IVendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static main.eshopapi.services.HashingService.hashPassword;
 
 @Service
 public class ManageVendorService {
@@ -29,18 +34,33 @@ public class ManageVendorService {
     }
 
     public void addVendor(Vendor vendor) {
-        vendorRepository.addVendor(vendor.getName(), vendor.getEmail(), vendor.getPassword());
+        vendorRepository.addVendor(vendor.getName(), vendor.getEmail(), hashPassword(vendor.getPassword()));
     }
 
-    public void editVendor(Vendor vendor) {
+    public void editVendor(VendorLogged vendor) {
 
-        if (vendor.getName() != null) {
-            vendorRepository.setVendorName(vendor.getId(), vendor.getName());
+        PasswordEncoder b = new BCryptPasswordEncoder();
+
+        if (vendor.getId() != null && b.matches(vendor.getAuthPassword(), vendorRepository.findVendorById(vendor.getId()).getPassword())) {
+            if (vendor.getName() != null) {
+                vendorRepository.setVendorName(vendor.getId(), vendor.getName());
+            }
+
+            if (vendor.getWallet() != null) {
+                vendorRepository.setVendorWallet(vendor.getId(), vendor.getWallet());
+            }
+
+            if (vendor.getEmail() != null) {
+                vendorRepository.setVendorEmail(vendor.getId(), vendor.getEmail());
+            }
+
+            if (vendor.getPassword() != null) {
+                vendorRepository.setVendorPassword(vendor.getId(), vendor.getPassword());
+            }
         }
 
-        if (vendor.getWallet() != null) {
-            vendorRepository.setVendorWallet(vendor.getId(), vendor.getWallet());
-        }
+
+
     }
 
     public Vendor findVendorByEmail(String email) {

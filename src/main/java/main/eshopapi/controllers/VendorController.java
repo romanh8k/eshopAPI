@@ -1,6 +1,7 @@
 package main.eshopapi.controllers;
 
 import main.eshopapi.dtos.SignUpDTO;
+import main.eshopapi.dtos.VendorLogged;
 import main.eshopapi.entities.Vendor;
 import main.eshopapi.services.ManageVendorService;
 import main.eshopapi.services.VendorProductService;
@@ -42,7 +43,7 @@ public class VendorController {
     }
 
     @PutMapping("/vendors")
-    public void editVendor(@RequestBody Vendor vendor) {
+    public void editVendor(@RequestBody VendorLogged vendor) {
         manageVendorService.editVendor(vendor);
     }
 
