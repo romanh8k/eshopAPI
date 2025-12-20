@@ -1,5 +1,6 @@
 package main.eshopapi.controllers;
 
+import main.eshopapi.dtos.CustomerLogged;
 import main.eshopapi.entities.Customer;
 import main.eshopapi.services.ManageCustomerService;
 import org.springframework.web.bind.annotation.*;
@@ -36,12 +37,12 @@ public class CustomerController {
     }
 
     @PutMapping("/customers")
-    public void editCustomer(@RequestBody Customer customer) {
+    public void editCustomer(@RequestBody CustomerLogged customer) {
         manageCustomerService.editCustomer(customer);
     }
 
-    @DeleteMapping(value = "/customers", params = "id")
-    public void deleteCustomer(@RequestParam Long id) {
-        manageCustomerService.deleteCustomer(id);
+    @DeleteMapping(value = "/customers")
+    public void deleteCustomer(@RequestBody CustomerLogged customer) {
+        manageCustomerService.deleteCustomer(customer);
     }
 }
