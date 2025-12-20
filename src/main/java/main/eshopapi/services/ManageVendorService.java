@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import static main.eshopapi.services.HashingService.hashPassword;
@@ -62,5 +63,10 @@ public class ManageVendorService {
 
     public Vendor findVendorByEmail(String email) {
         return vendorRepository.findVendorByEmail(email);
+    }
+
+    public void addMoney(Long id, BigDecimal amount) {
+        BigDecimal new_amount = vendorRepository.findVendorById(id).getWallet().add(amount);
+        vendorRepository.setVendorWallet(id, new_amount);
     }
 }

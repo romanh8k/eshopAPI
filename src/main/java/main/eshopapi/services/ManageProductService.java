@@ -44,12 +44,4 @@ public class ManageProductService {
     public List<Product> findProductsByVendorId(Long vendorId) {
         return productRepository.findProductsByVendorId(vendorId);
     }
-
-//    public void addProduct(Product p) {
-//        productRepository.addProduct(p.getVendorId(), p.getName(), p.getDescription(), p.getPrice(), p.getAmount());
-//    }
-
-
-
-
 }

@@ -32,7 +32,6 @@ public class VendorProductService {
             productRepository.deleteProductsByVendorId(id);
             vendorRepository.deleteVendor(id);
         }
-
     }
 
     public void addProduct(ProductLogged p) {
