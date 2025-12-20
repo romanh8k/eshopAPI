@@ -6,6 +6,7 @@ import main.eshopapi.repositories.ICustomerRepository;
 import main.eshopapi.repositories.IVendorRepository;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -50,5 +51,10 @@ public class ManageCustomerService {
 
     public void deleteCustomer(Long id) {
         customerRepository.deleteCustomer(id);
+    }
+
+    public void addMoney(Long id, BigDecimal amount) {
+        BigDecimal new_amount = customerRepository.findCustomerById(id).getWallet().add(amount);
+        customerRepository.setCustomerWallet(id, new_amount);
     }
 }
