@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.List;
 
+import static java.lang.Math.max;
+
 @Service
 public class ManageCustomerService {
 
@@ -53,8 +55,8 @@ public class ManageCustomerService {
         customerRepository.deleteCustomer(id);
     }
 
-    public void addMoney(Long id, BigDecimal amount) {
-        BigDecimal new_amount = customerRepository.findCustomerById(id).getWallet().add(amount);
+    public void editWallet(Long id, BigDecimal amount) {
+        BigDecimal new_amount = new BigDecimal(0.0).max(customerRepository.findCustomerById(id).getWallet().add(amount));
         customerRepository.setCustomerWallet(id, new_amount);
     }
 }

@@ -41,6 +41,9 @@ public class VendorProductService {
         else if (new BCryptPasswordEncoder().matches(p.getVendorPassword(), vendorRepository.findVendorById(p.getVendorId()).getPassword())) {
             productRepository.addProduct(p.getVendorId(), p.getName(), p.getDescription(), p.getPrice(), p.getAmount());
         }
+        else {
+            logger.warning("Wrong password!");
+        }
     }
 
     public void editProduct(ProductLogged p) {

@@ -42,8 +42,6 @@ public class VendorController {
         manageVendorService.addVendor(vendor);
     }
 
-    @PostMapping(value = "/vendors")
-
     @PutMapping("/vendors")
     public void editVendor(@RequestBody VendorLogged vendor) {
         manageVendorService.editVendor(vendor);

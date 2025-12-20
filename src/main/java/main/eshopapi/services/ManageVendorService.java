@@ -65,8 +65,8 @@ public class ManageVendorService {
         return vendorRepository.findVendorByEmail(email);
     }
 
-    public void addMoney(Long id, BigDecimal amount) {
-        BigDecimal new_amount = vendorRepository.findVendorById(id).getWallet().add(amount);
+    public void editWallet(Long id, BigDecimal amount) {
+        BigDecimal new_amount = new BigDecimal(0.0).max(vendorRepository.findVendorById(id).getWallet().add(amount));
         vendorRepository.setVendorWallet(id, new_amount);
     }
 }
